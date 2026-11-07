@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "mergeone": {
+      "command": "mergeone",
+      "args": ["mcp", "--policy", ".mergeone.yaml"]
+    }
+  }
+}

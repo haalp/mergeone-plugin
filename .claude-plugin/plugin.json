@@ -1,0 +1,13 @@
+{
+  "name": "mergeone",
+  "version": "0.4.0",
+  "description": "A merge gateway for agent pull requests: ask the gate before merging, find duplicates before opening a PR; it never merges or closes anything.",
+  "author": {
+    "name": "haalp",
+    "email": "hasanalp.tmz@gmail.com"
+  },
+  "homepage": "https://mergeone.dev",
+  "repository": "https://github.com/haalp/mergeone-plugin",
+  "license": "MIT",
+  "keywords": ["claude-code", "mcp", "pull-requests", "code-review", "merge", "agents", "gateway"]
+}

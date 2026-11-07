@@ -1,0 +1,14 @@
+{
+  "name": "mergeone-plugin",
+  "owner": {
+    "name": "haalp"
+  },
+  "plugins": [
+    {
+      "name": "mergeone",
+      "source": "./",
+      "description": "A merge gateway for agent pull requests: ask the gate before merging, find duplicates before opening a PR; it never merges or closes anything.",
+      "strict": false
+    }
+  ]
+}
