@@ -1,6 +1,6 @@
 {
   "name": "mergeone",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "A merge gateway for agent pull requests: ask the gate before merging, find duplicates before opening a PR; it never merges or closes anything.",
   "author": {
     "name": "haalp",
