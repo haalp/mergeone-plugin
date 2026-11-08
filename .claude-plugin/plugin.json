@@ -1,5 +1,6 @@
 {
   "name": "mergeone",
+  "displayName": "mergeone",
   "version": "0.5.0",
   "description": "A merge gateway for agent pull requests: ask the gate before merging, find duplicates before opening a PR; it never merges or closes anything.",
   "author": {
@@ -8,6 +9,32 @@
   },
   "homepage": "https://mergeone.dev",
   "repository": "https://github.com/haalp/mergeone-plugin",
+  "documentationUrl": "https://github.com/haalp/mergeone/blob/main/docs/POLICY.md",
+  "supportUrl": "https://github.com/haalp/mergeone/issues",
+  "privacyPolicyUrl": "https://github.com/haalp/mergeone-plugin/blob/main/README.md#what-it-runs-reads-and-sends",
   "license": "MIT",
-  "keywords": ["claude-code", "mcp", "pull-requests", "code-review", "merge", "agents", "gateway"]
+  "icon": "./icon.svg",
+  "keywords": [
+    "claude-code",
+    "mcp",
+    "pull-requests",
+    "code-review",
+    "merge",
+    "agents",
+    "gateway"
+  ],
+  "userConfig": {
+    "MERGEONE_MODEL_KEY": {
+      "type": "string",
+      "title": "Decision-model API key (optional)",
+      "description": "Key for the model named in .mergeone.yaml (Typesafe for jev, Perplexity for pplx-flash, Anthropic for haiku). Leave empty to use TYPESAFE_API_KEY / PERPLEXITY_API_KEY / ANTHROPIC_API_KEY from your environment or .env.",
+      "sensitive": true
+    },
+    "MERGEONE_GITHUB_TOKEN": {
+      "type": "string",
+      "title": "GitHub token (optional)",
+      "description": "Lets gate_similar and mergeone pr read pull requests from GitHub. Leave empty to use GITHUB_TOKEN from your environment.",
+      "sensitive": true
+    }
+  }
 }

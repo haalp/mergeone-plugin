@@ -2,7 +2,15 @@
   "mcpServers": {
     "mergeone": {
       "command": "mergeone",
-      "args": ["mcp", "--policy", ".mergeone.yaml"]
+      "args": [
+        "mcp",
+        "--policy",
+        ".mergeone.yaml"
+      ],
+      "env": {
+        "MERGEONE_MODEL_KEY": "${user_config.MERGEONE_MODEL_KEY}",
+        "MERGEONE_GITHUB_TOKEN": "${user_config.MERGEONE_GITHUB_TOKEN}"
+      }
     }
   }
 }
