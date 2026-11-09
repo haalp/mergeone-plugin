@@ -50,9 +50,12 @@ beyond the skill and command text.
 - **Sends:** the rendered PR state (title, body, file list, a bounded diff) to the decision-model endpoint of the
   model named in `.mergeone.yaml` — Typesafe (`jev`), Perplexity (`pplx`, `pplx-flash`), Anthropic (`haiku`) or your
   own `/v1/systemone` server. With `actions.enabled: true`, a commit status, labels and one comment to GitHub. With a
-  `portal` block, the gatelog record (verdict, probabilities, no diff text) to the portal URL you configured.
+  `portal` block (off unless you add it), the whole gatelog record — verdict, probabilities **and the rendered PR
+  state, bounded diff included** — to the portal URL you configured, which keeps it.
   Nothing is sent anywhere else; nothing is sent at all until you run a gate tool or command.
-- **Keeps:** `.mergeone/gatelog.jsonl` in your repository folder (verdicts, probabilities, the hash of the input). No
+- **Keeps:** `.mergeone/gatelog.jsonl` in your repository folder: verdicts, probabilities and the exact input the
+  model saw (the rendered PR state with its bounded diff — the audit trail). Keep it out of git if the diff is
+  sensitive. No
   personal data beyond what the PR itself carries (author login, title, body).
 
 The gate never merges and never closes a pull request.
