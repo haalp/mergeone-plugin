@@ -9,7 +9,7 @@
       "source": "./",
       "description": "A merge gateway for agent pull requests: ask the gate before merging, find duplicates before opening a PR; it never merges or closes anything.",
       "strict": false,
-      "version": "0.5.1"
+      "version": "0.6.0"
     }
   ],
   "description": "mergeone \u2014 a merge gateway for agent pull requests. Ask the gate before merging; it never merges or closes anything."

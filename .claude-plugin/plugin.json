@@ -1,8 +1,8 @@
 {
   "name": "mergeone",
   "displayName": "mergeone",
-  "version": "0.5.1",
-  "description": "A merge gateway for agent pull requests: ask the gate before merging, find duplicates before opening a PR; it never merges or closes anything.",
+  "version": "0.6.0",
+  "description": "A merge gateway for agent pull requests: ask the gate before merging, check for duplicates before opening a PR. Skills and commands around the mergeone CLI; it never merges or closes anything.",
   "author": {
     "name": "haalp",
     "email": "hasanalp.tmz@gmail.com"
@@ -22,19 +22,5 @@
     "merge",
     "agents",
     "gateway"
-  ],
-  "userConfig": {
-    "MERGEONE_MODEL_KEY": {
-      "type": "string",
-      "title": "Decision-model API key (optional)",
-      "description": "Key for the model named in .mergeone.yaml (Typesafe for jev, Perplexity for pplx-flash, Anthropic for haiku). Leave empty to use TYPESAFE_API_KEY / PERPLEXITY_API_KEY / ANTHROPIC_API_KEY from your environment or .env.",
-      "sensitive": true
-    },
-    "MERGEONE_GITHUB_TOKEN": {
-      "type": "string",
-      "title": "GitHub token (optional)",
-      "description": "Lets gate_similar and mergeone pr read pull requests from GitHub. Leave empty to use GITHUB_TOKEN from your environment.",
-      "sensitive": true
-    }
-  }
+  ]
 }

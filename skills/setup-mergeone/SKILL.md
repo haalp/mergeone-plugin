@@ -1,20 +1,24 @@
 ---
 name: setup-mergeone
-description: Use when mergeone is not installed or not configured: the `mergeone` command is missing, the mergeone MCP server fails to start, there is no .mergeone.yaml, or the user asks to set up, install or configure the merge gate.
+description: "Use when mergeone is not installed or not configured: the mergeone command is missing, there is no .mergeone.yaml, the mergeone MCP server fails to start, or the user asks to set up, install or configure the merge gate."
 ---
 
 # Set up mergeone
 
-The plugin starts `mergeone mcp --policy .mergeone.yaml`. It needs the binary and a policy file in the repository.
+The skills and commands run the `mergeone` binary. It needs to be installed, and the repository needs a policy file.
+The MCP server (`gate_decide`, `gate_similar`, …) is not part of this plugin: `mergeone init --mcp --write` adds it
+to the repository's own `.mcp.json`, where the team can review it.
 
-1. **Install the binary** (macOS / Linux):
+1. **Install the binary** (macOS / Linux). Tell the user the command and run it only after they agree:
    ```bash
-   brew install haalp/tap/mergeone          # or: curl -fsSL https://mergeone.dev/install.sh | sh
+   brew install haalp/tap/mergeone
    mergeone version
    ```
-   Releases are signed (Sigstore) and ship an SBOM; a container image is `ghcr.io/haalp/mergeone`.
+   Other routes: a release archive from https://github.com/haalp/mergeone/releases (checksums signed with Sigstore),
+   `go install github.com/haalp/mergeone/gate/cmd/mergeone@latest`, or the image `ghcr.io/haalp/mergeone`.
 2. **Write the policy** in the repository root: `mergeone init`. It prints what it detected, writes `.mergeone.yaml` with safe defaults (PR memory off, verdict actions off, fail closed) and never overwrites an existing file without `--force`.
-   - `--mcp --write` appends the "call gate_decide before merging" snippet to `CLAUDE.md`.
+   - `--mcp --write` writes the `mergeone mcp` server into the repository's `.mcp.json` and appends the "call
+     gate_decide before merging" snippet to `CLAUDE.md`.
    - `--ci` writes `.github/workflows/mergeone.yml`; `--all` is `--ci --mcp --write`.
    - `--model <name>` picks the decision model (`mergeone models` lists them).
    - `--portal <token>` (optional) posts gatelog records to the hosted portal. The token comes from the portal; do not invent one.
@@ -43,4 +47,4 @@ provider:
   key_optional: true
 ```
 
-After setup, restart Claude Code (or run `/mcp`) so the `mergeone` server starts with the new policy.
+After `--mcp --write`, restart Claude Code (or run `/mcp`) so the repository's `mergeone` server starts with the new policy.
